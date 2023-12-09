@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './header.css';
 import Web from './web';
 import Mobile from './mobile';
 
 function Header() {
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <div className="header">
             <div className='logo'>
@@ -14,7 +15,10 @@ function Header() {
                     <Web/>
                 </div>
                 <div className="mobile-menu">
-                    <Mobile/>
+                    <div  onClick={() => setIsOpen(!isOpen)}>    
+                        <i className="fa-solid fa-bars menu-icon"></i>
+                    </div>
+                    {isOpen && <Mobile isOpen={isOpen} setIsOpen={setIsOpen} />}
                 </div>
             </div>
         </div>
